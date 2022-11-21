@@ -1,5 +1,12 @@
 import 'package:flutter/material.dart';
 
+class Pages_router {
+  static const String welcome = 'welcome_Screen';
+  static const String login = 'login_Screen';
+  static const String registr = 'registr_Screen';
+  static const String chat = 'chat_Screen';
+}
+
 const kSendButtonTextStyle = TextStyle(
   color: Colors.lightBlueAccent,
   fontWeight: FontWeight.bold,

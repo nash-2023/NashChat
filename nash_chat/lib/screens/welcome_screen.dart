@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nash_chat/constants.dart';
 
 class WelcomeScreen extends StatefulWidget {
   @override
@@ -17,11 +18,16 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Container(
-                  child: Image.asset('images/logo.png'),
-                  height: 60.0,
+                Hero(
+                  tag: 'logo',
+                  child: Container(
+                    child: Image.asset('images/logo.png'),
+                    height: 60.0,
+                  ),
                 ),
+                SizedBox(width: 5.0),
                 Text(
                   'Flash Chat',
                   style: TextStyle(
@@ -42,7 +48,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 borderRadius: BorderRadius.circular(30.0),
                 child: MaterialButton(
                   onPressed: () {
-                    //Go to login screen.
+                    Navigator.pushNamed(context, Pages_router.login);
                   },
                   minWidth: 200.0,
                   height: 42.0,
@@ -60,7 +66,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 elevation: 5.0,
                 child: MaterialButton(
                   onPressed: () {
-                    //Go to registration screen.
+                    Navigator.pushNamed(context, Pages_router.registr);
                   },
                   minWidth: 200.0,
                   height: 42.0,
