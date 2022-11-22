@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "247773378595",
+    "project_id": "nash-chat",
+    "storage_bucket": "nash-chat.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:247773378595:android:1576e46ba4106325549996",
+        "android_client_info": {
+          "package_name": "com.devnash.nash_chat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "247773378595-932i0up2t6apqi1bhvst79h5ps008vll.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDNhWJNJ_tZcAiY-6fnlBHwfk96JO6nU48"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "247773378595-932i0up2t6apqi1bhvst79h5ps008vll.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

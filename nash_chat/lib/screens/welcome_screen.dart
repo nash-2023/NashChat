@@ -1,16 +1,47 @@
 import 'package:flutter/material.dart';
 import 'package:nash_chat/constants.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
+
+import '../components/roundedButton.dart';
 
 class WelcomeScreen extends StatefulWidget {
   @override
   _WelcomeScreenState createState() => _WelcomeScreenState();
 }
 
-class _WelcomeScreenState extends State<WelcomeScreen> {
+class _WelcomeScreenState extends State<WelcomeScreen>
+    with SingleTickerProviderStateMixin {
+  AnimationController? ctrl;
+  Animation? anim;
+
+  @override
+  void initState() {
+    ctrl = AnimationController(
+      duration: Duration(seconds: 3),
+      vsync: this,
+      // upperBound: 100.0,
+    );
+    anim = ColorTween(
+      begin: Colors.blueGrey,
+      end: Colors.white,
+    ).animate(ctrl!);
+    ctrl!.forward();
+    ctrl!.addListener(() {
+      setState(() {});
+    });
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    // ctrl.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: anim!.value,
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.0),
         child: Column(
@@ -28,53 +59,37 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   ),
                 ),
                 SizedBox(width: 5.0),
-                Text(
-                  'Flash Chat',
-                  style: TextStyle(
-                    fontSize: 45.0,
-                    fontWeight: FontWeight.w900,
-                  ),
+                AnimatedTextKit(
+                  animatedTexts: [
+                    TypewriterAnimatedText(
+                      'Flash Chat',
+                      speed: Duration(milliseconds: 100),
+                      textStyle: TextStyle(
+                        color: Colors.black,
+                        fontSize: 45.0,
+                        fontWeight: FontWeight.w900,
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
             SizedBox(
               height: 48.0,
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 16.0),
-              child: Material(
-                elevation: 5.0,
-                color: Colors.lightBlueAccent,
-                borderRadius: BorderRadius.circular(30.0),
-                child: MaterialButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, Pages_router.login);
-                  },
-                  minWidth: 200.0,
-                  height: 42.0,
-                  child: Text(
-                    'Log In',
-                  ),
-                ),
-              ),
+            RoundedButton(
+              title: 'Log In',
+              clr: Colors.lightBlueAccent,
+              onTap: () {
+                Navigator.pushNamed(context, Pages_router.login);
+              },
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 16.0),
-              child: Material(
-                color: Colors.blueAccent,
-                borderRadius: BorderRadius.circular(30.0),
-                elevation: 5.0,
-                child: MaterialButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, Pages_router.registr);
-                  },
-                  minWidth: 200.0,
-                  height: 42.0,
-                  child: Text(
-                    'Register',
-                  ),
-                ),
-              ),
+            RoundedButton(
+              title: 'Register',
+              clr: Colors.blueAccent,
+              onTap: () {
+                Navigator.pushNamed(context, Pages_router.registr);
+              },
             ),
           ],
         ),
@@ -82,3 +97,22 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     );
   }
 }
+
+
+
+
+
+ // anim = CurvedAnimation(
+    //   parent: ctrl!,
+    //   curve: Curves.easeIn,
+    // );
+// ctrl!.addStatusListener((status) {
+    //   if (status == AnimationStatus.completed) {
+    //     ctrl!.reverse(from: 1.0);
+    //   } else if (status == AnimationStatus.dismissed) {
+    //     ctrl!.forward();
+    //   }
+    //   print(status);
+    // });
+
+    // '${(ctrl!.value * 100).toInt()}%',
