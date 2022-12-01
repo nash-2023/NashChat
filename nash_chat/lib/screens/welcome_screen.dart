@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:nash_chat/constants.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
@@ -17,7 +18,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
   @override
   void initState() {
     ctrl = AnimationController(
-      duration: Duration(seconds: 3),
+      duration: Duration(seconds: 1),
       vsync: this,
       // upperBound: 100.0,
     );
@@ -28,13 +29,15 @@ class _WelcomeScreenState extends State<WelcomeScreen>
     ctrl!.forward();
     ctrl!.addListener(() {
       setState(() {});
+      // print(anim!.value);
     });
     super.initState();
+    Firebase.initializeApp();
   }
 
   @override
   void dispose() {
-    // ctrl.dispose();
+    ctrl?.dispose();
     super.dispose();
   }
 
