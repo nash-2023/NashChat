@@ -18,7 +18,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
   @override
   void initState() {
     ctrl = AnimationController(
-      duration: Duration(seconds: 1),
+      duration: Duration(seconds: 3),
       vsync: this,
       // upperBound: 100.0,
     );
