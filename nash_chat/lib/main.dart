@@ -27,3 +27,4 @@ class FlashChat extends StatelessWidget {
   }
 }
 // C:\Users\Dev.abdallla\AppData\Local\Pub\Cache\bin
+// allow read , write : if request.auth.uid != null
